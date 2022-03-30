@@ -11,14 +11,9 @@
       "id": 2
     },
     {
-      "name": "abcghd",
-      "price": "480.000",
+      "name": "product B",
+      "price": "479",
       "id": 3
-    },
-    {
-      "name": "product A",
-      "price": "480.000",
-      "id": 4
     }
   ]
 }

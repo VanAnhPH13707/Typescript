@@ -16,6 +16,8 @@ import AdminLayout from './pages/layouts/AdminLayout';
 import "bootstrap/dist/css/bootstrap.min.css"
 import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]); // 1
   // const [count, setCount] = useState<number>(0);
@@ -50,6 +52,8 @@ function App() {
       <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<Home />} />
           <Route path="product" element={<Product />} />
+          <Route path="signup" element={<Signup />}/>
+          <Route path="signin" element={<Signin />}/>
       </Route>
       <Route path="admin" element={<AdminLayout />}> 
         <Route index element={<Navigate to="dashboard"/>} />
