@@ -6,12 +6,6 @@ type Props = {}
 const AdminLayout = (props: Props) => {
   return (
     <div>
-        <header>
-            Header admin
-        </header>
-        <aside>
-            Menu main
-        </aside>
         <main>
             <Outlet />
         </main>

@@ -16,17 +16,20 @@ import AdminLayout from './pages/layouts/AdminLayout';
 import "bootstrap/dist/css/bootstrap.min.css"
 import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
+import PrivateRouter from './components/PrivateRouter';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]); // 1
   // const [count, setCount] = useState<number>(0);
-  
+
   useEffect(() => { // 3
-     const getProducts = async () => {
-        const { data } = await list();
-        setProducts(data);
-     }
-     getProducts();
-  },[])
+    const getProducts = async () => {
+      const { data } = await list();
+      setProducts(data);
+    }
+    getProducts();
+  }, [])
 
   const onHandleRemove = async (id: number) => {
     // xoa tren API
@@ -37,27 +40,29 @@ function App() {
 
   const onHandleAdd = async (product: ProductType) => {
     // call api
-    const { data} = await add(product);
+    const { data } = await add(product);
     setProducts([...products, data])
   }
-  const onHandleUpdate = async (product:ProductType) => {
-      console.log(product);
-     const { data } = await update(product)
-     setProducts(products.map(item => item.id == data.id ? data : item));
+  const onHandleUpdate = async (product: ProductType) => {
+    console.log(product);
+    const { data } = await update(product)
+    setProducts(products.map(item => item.id == data.id ? data : item));
   }
-  return ( 
+  return (
     <Routes>
       <Route path="/" element={<WebsiteLayout />}>
-          <Route index element={<Home />} />
-          <Route path="product" element={<Product />} />
+        <Route index element={<Home />} />
+        <Route path="product" element={<Product />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="signin" element={<Signin />} />
       </Route>
-      <Route path="admin" element={<AdminLayout />}> 
-        <Route index element={<Navigate to="dashboard"/>} />
+      <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
+        <Route index element={<Navigate to="dashboard" />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="product">
-          <Route index element={<ManagerProduct data={products} onRemove={onHandleRemove}/>} />
-          <Route path="add" element={<ProductAdd onAdd={onHandleAdd}/>} />
-          <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate}/>} />
+          <Route index element={<ManagerProduct data={products} onRemove={onHandleRemove} />} />
+          <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
+          <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
         </Route>
       </Route>
     </Routes>
