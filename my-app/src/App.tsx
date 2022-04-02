@@ -32,14 +32,11 @@ function App() {
   }, [])
 
   const onHandleRemove = async (id: number) => {
-    // xoa tren API
     await remove(id);
-    // reRender
     setProducts(products.filter(item => item.id !== id));
   }
 
   const onHandleAdd = async (product: ProductType) => {
-    // call api
     const { data } = await add(product);
     setProducts([...products, data])
   }
