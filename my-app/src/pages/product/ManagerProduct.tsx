@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ProductType } from '../types/product'
-import Dashboard from './Dashboard'
+import { ProductType } from '../../types/product'
+import Dashboard from '../Dashboard'
 
 type ManagerProductProps = {
   data: ProductType[],
@@ -41,21 +41,24 @@ const ManagerProduct = (props: ManagerProductProps) => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tiêu đề</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nội dung</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ảnh</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tên sản phẩm</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giá SP</th>
                     <th scope="col" className="relative px-6 py-3">
                     </th>
                   </tr>
                 </thead>
+
                 <tbody className="bg-white divide-y divide-gray-200">
                   {props.data && props.data.map((item, index) => {
                     return <tr key={index}>
                       <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
+                      <td className="px-6 py-4 whitespace-nowrap"></td>
                       <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                      <td></td>
+                      <td className="px-6 py-4 whitespace-nowrap">{item.price}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <Link to="/admin/product/${item.id}/edit" className=" bg-green-600 text-white inline-block py-3 px-5 rounded">Edit</Link>
-                        <button onClick={() => props.onRemove(item._id)}>Remove</button>
+                        <Link to={`/admin/product/${item.id}/edit`} className=" bg-green-600 text-white inline-block py-3 px-5 rounded">Edit</Link>
+                        <button onClick={() => props.onRemove(item._id) } >Remove</button>
                       </td>
                     </tr>
                   })}

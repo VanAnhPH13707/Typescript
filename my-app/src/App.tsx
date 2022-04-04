@@ -9,13 +9,13 @@ import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Product from './pages/Product';
 import Dashboard from './pages/Dashboard';
-import ManagerProduct from './pages/ManagerProduct';
+import ManagerProduct from './pages/product/ManagerProduct';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
 import AdminLayout from './pages/layouts/AdminLayout';
 
 import "bootstrap/dist/css/bootstrap.min.css"
-import ProductAdd from './pages/ProductAdd';
-import ProductEdit from './pages/ProductEdit';
+import ProductAdd from './pages/product/ProductAdd';
+import ProductEdit from './pages/product/ProductEdit';
 import PrivateRouter from './components/PrivateRouter';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
