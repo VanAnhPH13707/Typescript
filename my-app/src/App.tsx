@@ -19,10 +19,16 @@ import ProductEdit from './pages/product/ProductEdit';
 import PrivateRouter from './components/PrivateRouter';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
+import ProductList from './components/ProductList';
+import ManagerCategory from './pages/category/ManagerCategory';
+import { CategoryType } from './types/category';
+import CategoryAdd from './pages/category/CategoryAdd';
+import CategoryEdit from './pages/category/CategoryEdit';
+import { addCate, listCate, removeCate, updateCate } from './api/category';
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]); // 1
   // const [count, setCount] = useState<number>(0);
-
+  const [category, setCategory]= useState<CategoryType[]>([]);
   useEffect(() => { // 3
     const getProducts = async () => {
       const { data } = await list();
@@ -30,36 +36,61 @@ function App() {
     }
     getProducts();
   }, [])
+  useEffect(()=>{
+    const getCategory = async () =>{
+      const {data} = await listCate();
+      setCategory(data);
+    }
+    getCategory();
+  }, [])
 
   const onHandleRemove = async (id: number) => {
     await remove(id);
     setProducts(products.filter(item => item.id !== id));
+  }
+  const onHandleRemoveCate = async (id: number) => {
+    await removeCate(id);
+    setCategory(category.filter(item => item.id !== id));
   }
 
   const onHandleAdd = async (product: ProductType) => {
     const { data } = await add(product);
     setProducts([...products, data])
   }
+  const onHandleAddCate = async (category: CategoryType) => {
+    const { data } = await addCate(category);
+    setCategory([...category, data])
+  }
   const onHandleUpdate = async (product: ProductType) => {
     console.log(product);
     const { data } = await update(product)
     setProducts(products.map(item => item.id == data.id ? data : item));
   }
+  const onHandleUpdateCate = async (category: CategoryType) => {
+    console.log(category);
+    const { data } = await updateCate(category)
+    setCategory(category.map(item => item.id == data.id ? data : item));
+  }
   return (
     <Routes>
       <Route path="/" element={<WebsiteLayout />}>
-        <Route index element={<Home />} />
-        <Route path="product" element={<Product />} />
+        <Route index element={<Home data={products}/>} />
+        <Route path="product" element={<Product  />} />
         <Route path="signup" element={<Signup />} />
         <Route path="signin" element={<Signin />} />
       </Route>
       <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
         <Route index element={<Navigate to="dashboard" />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="product">
+        <Route path="products">
           <Route index element={<ManagerProduct data={products} onRemove={onHandleRemove} />} />
           <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
           <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
+        </Route>
+        <Route path="category">
+          <Route index element={<ManagerCategory data={category} cateRemove={onHandleRemoveCate} />} />
+          <Route path="add" element={<CategoryAdd cateAdd={onHandleAddCate} />} />
+          <Route path=":id/edit" element={<CategoryEdit cateUpdate={onHandleUpdateCate} />} />
         </Route>
       </Route>
     </Routes>

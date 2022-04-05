@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { ProductType } from '../../types/product'
+import { CategoryType } from '../../types/category'
 import Dashboard from '../Dashboard'
 
-type ManagerProductProps = {
-  data: ProductType[],
-  onRemove: (id: number) => void
+type ManagerCategoryProps = {
+  data: CategoryType[],
+  cateRemove: (id: number) => void
 }
 
-const ManagerProduct = (props: ManagerProductProps) => {
+const ManagerCategory = (props: ManagerCategoryProps) => {
   return (
 
     <div>
@@ -19,7 +19,7 @@ const ManagerProduct = (props: ManagerProductProps) => {
             <div className="lg:flex lg:items-center lg:justify-between">
               <div className="flex-1 min-w-0">
                 <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-                  Quản lý sản phẩm
+                  Quản lý danh mục
                 </h2>
               </div>
               <div className="mt-5 flex lg:mt-0 lg:ml-4">
@@ -43,7 +43,6 @@ const ManagerProduct = (props: ManagerProductProps) => {
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ảnh</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tên sản phẩm</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giá SP</th>
                     <th scope="col" className="relative px-6 py-3">
                     </th>
                   </tr>
@@ -55,10 +54,9 @@ const ManagerProduct = (props: ManagerProductProps) => {
                       <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
                       <td className="px-6 py-4 whitespace-nowrap"></td>
                       <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{item.price}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <Link to={`/admin/products/${item.id}/edit`} className="no-underline focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2.5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</Link>
-                        <button onClick={() => props.onRemove(item._id) } className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove</button>
+                        <Link to={`/admin/category/${item.id}/edit`} className="no-underline focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2.5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</Link>
+                        <button onClick={() => props.cateRemove(item._id) } className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove</button>
                       </td>
                     </tr>
                   })}
@@ -73,4 +71,4 @@ const ManagerProduct = (props: ManagerProductProps) => {
   )
 }
 
-export default ManagerProduct
+export default ManagerCategory

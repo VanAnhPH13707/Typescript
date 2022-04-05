@@ -15,8 +15,8 @@ const Dashboard = (props: Props) => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <NavLink to="/admin/dashboard" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</NavLink>
-                <NavLink to="/admin/posts" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">News</NavLink>
-                <NavLink to="/admin/product" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</NavLink>
+                <NavLink to="/admin/category" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Category</NavLink>
+                <NavLink to="/admin/products" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</NavLink>
                 <NavLink to="/admin/orders" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Order</NavLink>
                 <NavLink to="/admin/settings" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Settings</NavLink>
               </div>
