@@ -44,13 +44,13 @@ function App() {
     getCategory();
   }, [])
 
-  const onHandleRemove = async (id: number) => {
-    await remove(id);
-    setProducts(products.filter(item => item.id !== id));
+  const onHandleRemove = async (_id: string) => {
+    await remove(_id);
+    setProducts(products.filter(item => item._id !== _id));
   }
-  const onHandleRemoveCate = async (id: number) => {
-    await removeCate(id);
-    setCategory(category.filter(item => item.id !== id));
+  const onHandleRemoveCate = async (_id: string) => {
+    await removeCate(_id);
+    setCategory(category.filter(item => item._id !== _id));
   }
 
   const onHandleAdd = async (product: ProductType) => {
@@ -64,18 +64,18 @@ function App() {
   const onHandleUpdate = async (product: ProductType) => {
     console.log(product);
     const { data } = await update(product)
-    setProducts(products.map(item => item.id == data.id ? data : item));
+    setProducts(products.map(item => item._id == data.id ? data : item));
   }
   const onHandleUpdateCate = async (category: CategoryType) => {
     console.log(category);
     const { data } = await updateCate(category)
-    setCategory(category.map(item => item.id == data.id ? data : item));
+    setCategory(category.map(item => item._id == data.id ? data : item));
   }
   return (
     <Routes>
       <Route path="/" element={<WebsiteLayout />}>
         <Route index element={<Home data={products}/>} />
-        <Route path="product" element={<Product  />} />
+        <Route path="product" element={<Product data={products}  />} />
         <Route path="signup" element={<Signup />} />
         <Route path="signin" element={<Signin />} />
       </Route>

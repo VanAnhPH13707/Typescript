@@ -5,7 +5,7 @@ import Dashboard from '../Dashboard'
 
 type ManagerCategoryProps = {
   data: CategoryType[],
-  cateRemove: (id: number) => void
+  cateRemove: (_id: string) => void
 }
 
 const ManagerCategory = (props: ManagerCategoryProps) => {
@@ -23,7 +23,7 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
                 </h2>
               </div>
               <div className="mt-5 flex lg:mt-0 lg:ml-4">
-                <NavLink to="/admin/products/add" className="no-underline sm:ml-3">
+                <NavLink to="/admin/category/add" className="no-underline sm:ml-3">
                   <button type="button" className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     + Thêm mới
                   </button>
@@ -41,8 +41,7 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ảnh</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tên sản phẩm</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tên danh mục</th>
                     <th scope="col" className="relative px-6 py-3">
                     </th>
                   </tr>
@@ -52,11 +51,10 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
                   {props.data && props.data.map((item, index) => {
                     return <tr key={index}>
                       <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
-                      <td className="px-6 py-4 whitespace-nowrap"></td>
                       <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <Link to={`/admin/category/${item.id}/edit`} className="no-underline focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2.5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</Link>
-                        <button onClick={() => props.cateRemove(item._id) } className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove</button>
+                        <Link to={`/admin/category/${item._id}/edit`} className="no-underline focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2.5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Sửa</Link>
+                        <button onClick={() => props.cateRemove(item._id) } className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Xóa</button>
                       </td>
                     </tr>
                   })}

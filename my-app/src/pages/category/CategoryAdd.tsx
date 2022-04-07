@@ -18,6 +18,7 @@ const CategoryAdd = (props: CategoryAddProps) => {
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         props.cateAdd(data);
         navigate('/admin/category');
+        window.location.reload();
 
     }
     return (

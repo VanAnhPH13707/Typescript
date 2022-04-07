@@ -5,7 +5,7 @@ import Dashboard from '../Dashboard'
 
 type ManagerProductProps = {
   data: ProductType[],
-  onRemove: (id: number) => void
+  onRemove: (_id: string) => void
 }
 
 const ManagerProduct = (props: ManagerProductProps) => {
@@ -43,7 +43,8 @@ const ManagerProduct = (props: ManagerProductProps) => {
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ảnh</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tên sản phẩm</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giá SP</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Đơn giá</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mô tả</th>
                     <th scope="col" className="relative px-6 py-3">
                     </th>
                   </tr>
@@ -53,12 +54,18 @@ const ManagerProduct = (props: ManagerProductProps) => {
                   {props.data && props.data.map((item, index) => {
                     return <tr key={index}>
                       <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
-                      <td className="px-6 py-4 whitespace-nowrap"></td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <img src={item.image} alt="" width="50" />
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{item.price}</td>
+                      <div>
+                        {item.desc}
+                      </div>
+
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <Link to={`/admin/products/${item.id}/edit`} className="no-underline focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2.5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</Link>
-                        <button onClick={() => props.onRemove(item._id) } className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove</button>
+                        <Link to={`/admin/products/${item._id}/edit`} className="no-underline focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2.5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Sửa</Link>
+                        <button onClick={() => props.onRemove(item._id)} className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Xóa</button>
                       </td>
                     </tr>
                   })}

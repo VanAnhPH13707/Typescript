@@ -16,11 +16,13 @@ const CategoryEdit = (props: CategoryEditProps) => {
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>();
     const navigate = useNavigate();
+    
 
     useEffect(() => {
         const getCategory = async () => {
             const { data } = await readCate(id);
-            reset(data);
+            console.log(data);
+            reset(data.category);
         }
         getCategory();
     }, []);
@@ -28,6 +30,7 @@ const CategoryEdit = (props: CategoryEditProps) => {
     const onSubmit: SubmitHandler<FormInputs> = data => {
         props.cateUpdate(data);
         navigate('/admin/category');
+        window.location.reload();
     }
 
     return (

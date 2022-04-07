@@ -2,6 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const a = JSON.parse(localStorage.getItem('user') as string);
+  const handleClick = (event: React.MouseEvent<HTMLElement>, text: string) => {
+    // console.log(event.target.value);
+    localStorage.removeItem('user');
+    window.location.reload();
+  };
   return (
     <div>
       <div className=" bg-amber-400 ">
@@ -16,10 +22,18 @@ const Header = () => {
             <div className=" flex space-x-3 items-center">
               <img className=" font-normal text-2xl leading-6 text-gray-800 dark:text-white " src="https://bizweb.dktcdn.net/100/419/519/themes/844270/assets/logo.png?1640331271710" />
             </div>
-            <div className="hidden sm:flex flex-row space-x-4">
-              <NavLink to="/signup" className="no-underline"><button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-amber-600 bg-white border border-amber-600 focus:outline-none focus:bg-amber-600 hover:bg-gray-200 duration-150 justify-center items-center">Đăng ký</button></NavLink>
-              <NavLink to="/signin" className="no-underline"><button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-gray-200 hover:bg-neutral-800 duration-150 justify-center items-center hover:text-amber-400">Đăng nhập</button></NavLink>
-            </div>
+
+            {a == null ? (
+              <div className="hidden sm:flex flex-row space-x-4">
+                <NavLink to="/signup" className="no-underline"><button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-amber-600 bg-white border border-amber-600 focus:outline-none focus:bg-amber-600 hover:bg-gray-200 duration-150 justify-center items-center">Đăng ký</button></NavLink>
+                <NavLink to="/signin" className="no-underline"><button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-gray-200 hover:bg-neutral-800 duration-150 justify-center items-center hover:text-amber-400">Đăng nhập</button></NavLink>
+              </div>
+            ) : (
+              <button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-gray-200 hover:bg-neutral-800 duration-150 justify-center items-center hover:text-amber-400" onClick={(e) => handleClick(e, "clicked")}>Đăng xuất</button>
+            )}
+
+
+
           </div>
         </nav>
       </div>
