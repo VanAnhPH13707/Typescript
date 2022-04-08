@@ -4,6 +4,7 @@ import { signin, signup } from "../api/auth";
 import { authenticate } from "../utils/localStorage";
 
 type FormValues = {
+
   name: string,
   email: string,
   password: string
@@ -70,3 +71,4 @@ const Signin = () => {
 }
 
 export default Signin
+
