@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ProductType } from '../types/product'
 type ProductListProps = {
     data: ProductType[]
@@ -24,8 +25,8 @@ const ProductList = (props: ProductListProps) => {
                                     <button className="bg-transparent font-medium text-base leading-4 border-2 border-white py-3 w-full mt-2 text-white">Quick View</button>
                                 </div>
                             </div>
-                            <p className="font-normal dark:text-white text-xl leading-5 text-gray-800 md:mt-6 mt-4">{item.name}</p>
-                            <p className="font-semibold dark:text-gray-300 text-xl leading-5 text-gray-800 mt-4">{item.price}đ</p>
+                            <Link to={`/products/${item._id}`} className="no-underline"><p className="font-bold dark:text-white text-xl leading-5 text-gray-800 md:mt-6 mt-4">{item.name}</p> </Link>
+                            <p className="font-semibold dark:text-gray-300 text-lg leading-5 text-red-600 mt-4">{item.price}đ</p>
                         </div>
                     </div>
                 })}

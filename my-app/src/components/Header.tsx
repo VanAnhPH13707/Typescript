@@ -37,7 +37,7 @@ const Header = () => {
 
       <div className=" ">
         <div className="w-full flex bg-zinc-900 justify-around absolute opacity-90 h-14">
-          <ul className="flex pl-20 py-3">
+          <ul className="flex pl-6 py-3">
             <li><a href="/" className="no-underline px-4 text-white hover:text-amber-500">Trang chủ</a></li>
             <li><a href="/product" className="no-underline px-4 text-white hover:text-amber-500">Sản phẩm</a></li>
             <li><a href="/about" className="no-underline px-4 text-white hover:text-amber-500">Tin tức</a></li>
