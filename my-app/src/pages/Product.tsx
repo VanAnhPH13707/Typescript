@@ -35,7 +35,7 @@ const Product = (props: ProductProps) => {
                                 </div>
                             </div>
                             <p className="font-normal dark:text-white text-xl leading-5 text-gray-800 md:mt-6 mt-4">{item.name}</p>
-                            <p className="font-semibold dark:text-gray-300 text-xl leading-5 text-gray-800 mt-4">{item.price}</p>
+                            <p className="font-semibold dark:text-gray-300 text-xl leading-5 text-gray-800 mt-4">{item.price}đ</p>
                         </div>
                     </div>
                 })}
