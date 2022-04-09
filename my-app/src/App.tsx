@@ -79,7 +79,7 @@ function App() {
       <Route path="/" element={<WebsiteLayout />}>
         <Route index element={<Home data={products}/>} />
         <Route path="product" element={<Product data={products}  />} />
-        <Route path="/product/:id" element={<ProductDetail data={products} />} />
+        <Route path="products/:id" element={<ProductDetail/>} />
         <Route path="about" element={<About  />} />
         <Route path="contact" element={<Contact  />} />
         <Route path="signup" element={<Signup />} />

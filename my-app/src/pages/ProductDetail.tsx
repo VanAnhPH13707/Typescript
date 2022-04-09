@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { read } from '../api/product';
 import { ProductType } from '../types/product';
 import toastr from 'toastr';
 import "toastr/build/toastr.min.css";
 
-type ProductDetailProps = {
-  data: ProductType[]
-}
-
-const ProductDetail = (props: ProductDetailProps) => {
+const ProductDetail = () => {
   const { id } = useParams();
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const navigate = useNavigate();
-
+  const [products, setProducts] = useState<ProductType[]>([]);
   useEffect(() => {
     const getProduct = async () => {
       const { data } = await read(id);
-      reset(data);
+      setProducts(data);
     }
     getProduct();
   }, []);
+  // console.log(products);
+  console.log(id);
+  console.log(products);
+  
   return (
     <div>
       <div className="max-w-5xl mx-auto">
