@@ -14,12 +14,6 @@ import WebsiteLayout from './pages/layouts/WebsiteLayout';
 import AdminLayout from './pages/layouts/AdminLayout';
 
 import "bootstrap/dist/css/bootstrap.min.css"
-<<<<<<< HEAD
-import ProductAdd from './pages/ProductAdd';
-import ProductEdit from './pages/ProductEdit';
-import Signup from './pages/Signup';
-import Signin from './pages/Signin';
-=======
 import ProductAdd from './pages/product/ProductAdd';
 import ProductEdit from './pages/product/ProductEdit';
 import PrivateRouter from './components/PrivateRouter';
@@ -34,7 +28,6 @@ import { addCate, listCate, removeCate, updateCate } from './api/category';
 import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
->>>>>>> Assignment
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]); // 1
   // const [count, setCount] = useState<number>(0);
@@ -84,12 +77,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<WebsiteLayout />}>
-<<<<<<< HEAD
-          <Route index element={<Home />} />
-          <Route path="product" element={<Product />} />
-          <Route path="signup" element={<Signup />}/>
-          <Route path="signin" element={<Signin />}/>
-=======
         <Route index element={<Home data={products}/>} />
         <Route path="product" element={<Product data={products}  />} />
         <Route path="/product/:id" element={<ProductDetail data={products} />} />
@@ -97,7 +84,6 @@ function App() {
         <Route path="contact" element={<Contact  />} />
         <Route path="signup" element={<Signup />} />
         <Route path="signin" element={<Signin />} />
->>>>>>> Assignment
       </Route>
       <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
         <Route index element={<Navigate to="dashboard" />} />

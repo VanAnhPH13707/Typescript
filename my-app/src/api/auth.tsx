@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import instance from './instance';
 
 export const signup = (user:{}) => {
@@ -7,15 +6,4 @@ export const signup = (user:{}) => {
 }
 export const signin = (user:{}) => {
     const url = `/signin`;
-=======
-import instance from "./instance";
-
-export const signup = (user: {}) =>{
-    const url ='/signup';
-    return instance.post(url, user);
-}
-export const signin = (user:{}) =>{
-    const url ='/signin';
->>>>>>> Assignment
-    return instance.post(url, user);
 }
