@@ -29,7 +29,10 @@ const Header = () => {
                 <NavLink to="/signin" className="no-underline"><button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-gray-200 hover:bg-neutral-800 duration-150 justify-center items-center hover:text-amber-400">Đăng nhập</button></NavLink>
               </div>
             ) : (
-              <button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-gray-200 hover:bg-neutral-800 duration-150 justify-center items-center hover:text-amber-400" onClick={(e) => handleClick(e, "clicked")}>Đăng xuất</button>
+              <div className="hidden sm:flex flex-row space-x-4">
+                <span className="rounded-md flex space-x-2 w-60 h-10 font-normal text-sm leading-3 text-amber-600 bg-white border border-amber-600 focus:outline-none focus:bg-amber-600 hover:bg-gray-200 duration-150 justify-center items-center">{a.user.email}</span>
+                <button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-gray-200 hover:bg-neutral-800 duration-150 justify-center items-center hover:text-amber-400" onClick={(e) => handleClick(e, "clicked")}>Đăng xuất</button>
+              </div>
             )}
           </div>
         </nav>
@@ -38,11 +41,11 @@ const Header = () => {
       <div className=" ">
         <div className="w-full flex bg-zinc-900 justify-around absolute opacity-90 h-14">
           <ul className="flex pl-6 py-3">
-            <li><a href="/" className="no-underline px-4 text-white hover:text-amber-500">Trang chủ</a></li>
-            <li><a href="/product" className="no-underline px-4 text-white hover:text-amber-500">Sản phẩm</a></li>
-            <li><a href="/about" className="no-underline px-4 text-white hover:text-amber-500">Tin tức</a></li>
-            <li><a href="/contact" className="no-underline px-4 text-white hover:text-amber-500">Liên hệ</a></li>
-            <li><a href="/admin" className="no-underline px-4 text-white hover:text-amber-500">dashboard</a></li>
+            <li><NavLink to="/" className="no-underline px-4 text-white hover:text-amber-500">Trang chủ</NavLink></li>
+            <li><NavLink to="/product" className="no-underline px-4 text-white hover:text-amber-500">Sản phẩm</NavLink></li>
+            <li><NavLink to="/about" className="no-underline px-4 text-white hover:text-amber-500">Tin tức</NavLink></li>
+            <li><NavLink to="/contact" className="no-underline px-4 text-white hover:text-amber-500">Liên hệ</NavLink></li>
+            <li><NavLink to="/admin" className="no-underline px-4 text-white hover:text-amber-500">dashboard</NavLink></li>
           </ul>
           <div className="flex justify-between">
             <div className="pl-16 py-2">

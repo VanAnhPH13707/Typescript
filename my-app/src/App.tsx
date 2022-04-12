@@ -28,6 +28,7 @@ import { addCate, listCate, removeCate, updateCate } from './api/category';
 import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Cart from './pages/Cart';
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]); // 1
   // const [count, setCount] = useState<number>(0);
@@ -82,6 +83,7 @@ function App() {
         <Route path="products/:id" element={<ProductDetail/>} />
         <Route path="about" element={<About  />} />
         <Route path="contact" element={<Contact  />} />
+        <Route path="cart" element={<Cart  />} />
         <Route path="signup" element={<Signup />} />
         <Route path="signin" element={<Signin />} />
       </Route>
