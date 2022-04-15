@@ -15,8 +15,8 @@ const Home = (props: Props) => {
     <div>
       <ProductList data={props.data} />
       <ReactPaginate
-            previousLabel={'<<'}
-            nextLabel={'>>'}
+            previousLabel={'<'}
+            nextLabel={'>'}
             breakLabel={'...'}
             pageCount={5}
             marginPagesDisplayed={3}
